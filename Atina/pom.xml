@@ -1,0 +1,45 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.system</groupId>
+  <artifactId>InfoServet</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>Atina SGIAP</name>
+  <description>SISTEMA DE GERENCIAMENTO E INVENTARIO DE AUTO-PEÇAS</description>
+  <dependencies>
+    <!-- Jakarta Servlet API -->
+    <dependency>
+        <groupId>jakarta.servlet</groupId>
+        <artifactId>jakarta.servlet-api</artifactId>
+        <version>6.0.0</version> <!-- Compatível com Tomcat 11 -->
+        <scope>provided</scope>
+    </dependency>
+
+    <!-- JSON Processing (org.json) -->
+    <dependency>
+        <groupId>org.json</groupId>
+        <artifactId>json</artifactId>
+        <version>20210307</version>
+    </dependency>
+
+    <!-- BCrypt (criptografia de senha) -->
+    <dependency>
+        <groupId>org.mindrot</groupId>
+        <artifactId>jbcrypt</artifactId>
+        <version>0.4</version>
+    </dependency>
+
+    <!-- Conexão com Banco de Dados (Ajuste conforme seu banco) -->
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.33</version> <!-- Ajuste conforme necessário -->
+    </dependency>
+    <dependency>
+    	<groupId>io.github.cdimascio</groupId>
+   	 	<artifactId>java-dotenv</artifactId>
+    	<version>5.2.2</version> <!-- Verifique a última versão no repositório Maven -->
+	</dependency>
+
+  </dependencies>
+</project>
