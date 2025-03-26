@@ -153,7 +153,7 @@ public class UserServlet extends HttpServlet {
 	private JSONObject deleteUser(int id) {
 	    JSONObject jsonObject = new JSONObject();
 	    try (Connection connection = DataBaseConnection.getConnection();
-	         PreparedStatement stmt = connection.prepareStatement("DELETE FROM user WHERE iduser = ?")) {
+	         PreparedStatement stmt = connection.prepareStatement("DELETE FROM user WHERE id = ?")) {
 	        stmt.setInt(1, id);
 	        int rowsAffected = stmt.executeUpdate();
 
@@ -172,14 +172,14 @@ public class UserServlet extends HttpServlet {
 	    return jsonObject;
 	}
 
-	private JSONObject getUser(String username) {
+	private JSONObject getUser(String name) {
 		JSONObject user = new JSONObject();
         try (Connection connection = DataBaseConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT iduser, name FROM user WHERE name = ?")) {
-            statement.setString(1, username);
+             PreparedStatement statement = connection.prepareStatement("SELECT id, name FROM user WHERE name = ?")) {
+            statement.setString(1, name);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                user.put("iduser", resultSet.getInt("iduser"));
+                user.put("id", resultSet.getInt("id"));
                 user.put("name", resultSet.getString("name"));
             }
         } catch (Exception e) {

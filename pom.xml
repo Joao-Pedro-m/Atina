@@ -29,17 +29,11 @@
         <version>0.4</version>
     </dependency>
 
-    <!-- Conexão com Banco de Dados (Ajuste conforme seu banco) -->
+    <!-- Connector for the database-->
     <dependency>
         <groupId>mysql</groupId>
-        <artifactId>mysql-connector-java</artifactId>
-        <version>8.0.33</version> <!-- Ajuste conforme necessário -->
+	<artifactId>mysql-connector-java</artifactId>
+        <version>8.0.33</version>
     </dependency>
-    <dependency>
-    	<groupId>io.github.cdimascio</groupId>
-   	 	<artifactId>java-dotenv</artifactId>
-    	<version>5.2.2</version> <!-- Verifique a última versão no repositório Maven -->
-	</dependency>
-
   </dependencies>
 </project>
