@@ -1,5 +1,5 @@
 -- Usar o banco de dados correto
-USE meu_banco;
+USE mydb;
 
 -- Criar tabela de usuários
 CREATE TABLE IF NOT EXISTS user (
