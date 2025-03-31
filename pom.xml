@@ -15,6 +15,13 @@
         <scope>provided</scope>
     </dependency>
 
+    <!--Binary Arquives Processing-->
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+       <version>1.4</version>
+    </dependency>
+
     <!-- JSON Processing (org.json) -->
     <dependency>
         <groupId>org.json</groupId>
