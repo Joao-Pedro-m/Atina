@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/uploadForm") // Acessível via http://localhost:8080/seuProjeto/uploadForm
+@WebServlet("/product/imageform")
 public class ProductFormServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -24,7 +24,7 @@ public class ProductFormServlet extends HttpServlet {
         out.println("</head>");
         out.println("<body>");
         out.println("<h2>Upload Images</h2>");
-	out.println("<form action='upload' method='post' enctype='multipart/form-data'>");
+	out.println("<form action='image' method='post' enctype='multipart/form-data'>");
 	out.println("<label for='product_id'>Product ID:</label>");
 	out.println("<input type='number' id='product_id' name='product_id' required>");
 	out.println("<br><br>");
