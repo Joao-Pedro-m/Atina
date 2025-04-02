@@ -21,6 +21,14 @@ CREATE TABLE IF NOT EXISTS product (
     FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS product_images (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    image MEDIUMBLOB NOT NULL,
+    product_id INT NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE
+);
+
 -- Inserir usuários iniciais
 INSERT INTO user (name, password) VALUES
 ('João', '123456'),
