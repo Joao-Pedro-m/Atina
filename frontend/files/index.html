@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="./style.css" media="screen">
+</head>
+<body>
+    <div id="login_area">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome">
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha">
+        <input type="button" id="login" value="ENTRAR">    
+    </div>
+</body>
+    <script>
+        const nome_input = document.getElementById("nome");
+        const senha_input = document.getElementById("senha");
+        const botao_login = document.getElementById("login");
+
+        var name = null;
+        var password = null;
+
+
+        async function getinfo() {
+            try{
+                const response_name = await fetch(`http://localhost:8080/api/user/${nome_input.value}`); // url
+                
+                if (!response_name.ok) {
+                    throw new Error(`Erro HTTP: ${response_name.status}`);
+                }
+
+                var name_list = await response_name.json();
+                name = name_list['name'];
+                
+                console.log(name);
+            }catch (error){
+                console.error("Erro na requisição:", error);
+            }
+            try{
+                // GET PASSWORD
+            }finally{
+                if (name != null ){
+                    window.location.replace("./estoque.html"); // Redirecionar
+                }
+            }
+        }
+
+
+        botao_login.addEventListener("click", getinfo);
+    </script>
+</html>
