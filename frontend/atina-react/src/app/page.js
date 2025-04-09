@@ -7,8 +7,8 @@ import { inter } from "@/app/layout";
 import { useState } from "react";
 
 export default function Home() {
-  const [name, setName] = useState();
-  const [pwd, setPwd] = useState();
+  const [name, setName] = useState("");
+  const [pwd, setPwd] = useState("");
 
   async function getinfo() {
     // PEGAR O NOME E A SENHA NA API E VERIFICAR COM OS INPUTS
