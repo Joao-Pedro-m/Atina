@@ -13,26 +13,39 @@ This project is a Java web application using **Servlets**, **Tomcat 11**, and **
 ## 📂 Project Structure
 ```
 /my-project
-├── Dockerfile
+atina/
+├── backend/                 # Backend (Java Servlets + Maven)
+│   ├── src/
+│   │   └── main/
+│   │       ├── java/
+│   │       │   └── com/
+│   │       │       └── atina/
+│   │       │           ├── controller/    # Servlets
+│   │       │           ├── service/       # Lógica de negócio
+│   │       │           ├── database/      # Acesso ao BD
+│   │       │           ├── model/         # Entidades
+│   │       │           └── config/        # Configurações
+│   │       ├── webapp/
+│   │       │   └── WEB-INF/
+│   │       │       └── web.xml
+│   │       └── resources/
+│   │           └── db.properties
+│   ├── Dockerfile
+│   └── pom.xml
+├── frontend/                # Frontend Vue.js ou React (a escolher)
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── router/
+│   │   └── views/
+│   ├── package.json
+│   └── Dockerfile
 ├── docker-compose.yml
-├── db-scripts/
-│   └── init.sql  # SQL script to create tables
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   ├── com/
-│   │   │   │   ├── api/
-│   │   │   │   │   └── UserServlet.java
-│   │   │   │   ├── database/
-│   │   │   │   │   └── DataBaseConnection.java
-│   │   │   │   ├── exceptions/
-│   │   │   │   │   └── Status.java
-├── pom.xml
+└── scripts/                 # Scripts auxiliares
+    └── init-db.sql
 ```
 
 ---
-
-Isso reflete a estrutura de diretórios que você mostrou. Se precisar de mais alguma coisa, é só avisar!
 
 ## 🐳 How to Run with Docker
 ### 📌 1. **Build and Start**

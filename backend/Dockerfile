@@ -1,12 +1,13 @@
 
 # 1 - Compila o projeto usando Maven com JDK 21
-FROM maven:3.9.6-eclipse-temurin-21 AS builder
+FROM maven:3.8.6-openjdk-11 AS build
 
 # 2 - Definir diretorio de trabalho
 WORKDIR /app
 
 # 3 - Copia os arquivos do projeto para o container
-COPY . .
+COPY pom.xml
+COPY src ./src
 
 # 4 - Compila o projeto e gera o arquivo war
 RUN mvn clean package
