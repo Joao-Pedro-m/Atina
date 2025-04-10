@@ -1,4 +1,4 @@
-package com.api;
+package com.atina.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,12 +19,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 
-import com.database.DataBaseConnection;
+import com.atina.config.DatabaseConnection;
 
 @WebServlet("/product/image")
 @MultipartConfig(maxFileSize = 1024 * 1024 * 10) // Limite de 10MB
-public class ProductImageServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+public class ProductController extends HttpServlet {
+    /*protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int productId = Integer.parseInt(request.getParameter("product_id"));
 
@@ -65,7 +65,7 @@ public class ProductImageServlet extends HttpServlet {
 		InputStream fileContent = filePart.getInputStream();
 		int productId = Integer.parseInt(request.getParameter("product_id"));
 
-        	try (Connection conn = DataBaseConnection.getConnection()) {
+        	try (Connection conn = DatabaseConnection.getConnection()) {
             		String sql = "INSERT INTO product_images (name, image, product_id) VALUES (?, ?, ?)";
             		PreparedStatement statement = conn.prepareStatement(sql);
             		statement.setString(1, fileName);
@@ -80,6 +80,6 @@ public class ProductImageServlet extends HttpServlet {
         	    ex.printStackTrace();
             	response.getWriter().println("Erro ao enviar imagem.");
         	}
-    	}
+    	}*/
 }
 
