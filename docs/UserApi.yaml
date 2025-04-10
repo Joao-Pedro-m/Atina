@@ -1,0 +1,134 @@
+openapi: 3.0.0
+info:
+  title: API de Gerenciamento de Usuários
+  description: API para operações CRUD de usuários do sistema de inventário automotivo
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api
+    description: Servidor de desenvolvimento
+
+paths:
+  /user/{identifier}:
+    get:
+      tags:
+        - Users
+      summary: Obtém um usuário pelo nome
+      description: Retorna os dados do usuário baseado no nome de usuário
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          description: Nome do usuário
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Dados do usuário
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                id: 1
+                name: "joao_silva"
+        '400':
+          description: Requisição inválida
+        '404':
+          description: Usuário não encontrado
+        '500':
+          description: Erro interno do servidor
+
+    delete:
+      tags:
+        - Users
+      summary: Remove um usuário pelo ID
+      description: Deleta permanentemente um usuário do sistema
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          description: ID numérico do usuário
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Usuário deletado com sucesso
+          content:
+            application/json:
+              example:
+                status: 200
+                message: "Usuário deletado."
+        '400':
+          description: ID inválido fornecido
+        '404':
+          description: Usuário não encontrado
+        '500':
+          description: Erro interno do servidor
+
+  /user:
+    post:
+      tags:
+        - Users
+      summary: Cria um novo usuário
+      description: Registra um novo usuário no sistema com senha criptografada
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Nome do usuário
+                  example: "maria_oliveira"
+                password:
+                  type: string
+                  format: password
+                  description: Senha não criptografada
+                  example: "Senha@123"
+              required:
+                - name
+                - password
+      responses:
+        '201':
+          description: Usuário criado com sucesso
+          content:
+            application/json:
+              example:
+                status: 201
+                message: "Usuário criado com sucesso!"
+        '400':
+          description: Dados obrigatórios faltando
+        '409':
+          description: Conflito - Usuário já existe
+        '500':
+          description: Erro interno do servidor
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          example: "joao_silva"
+      required:
+        - id
+        - name
+
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+        message:
+          type: string
+      example:
+        status: 400
+        message: "Parâmetros inválidos fornecidos"

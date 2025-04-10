@@ -1,0 +1,49 @@
+networks:
+  public:
+    driver: bridge
+  private:
+    driver: bridge
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: atina
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./script/init.sql:docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"
+    networks:
+      - private
+
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: jdbc:mysql://db:3306/atina
+      DB_USER: user
+      DB_PASSWORD: root
+    depends_on:
+      - db
+    networks:
+      - private
+  
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    environment:
+      NEXT_PUBLIC_API_URL: http://backend:8080
+    depends_on:
+      - backend
+    networks:
+      - public
+      - private
+volumes:
+  mysql-data:
