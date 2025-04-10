@@ -1,4 +1,4 @@
-```markdown
+
 # Atina - Sistema de Gerenciamento de Autopeças
 
 ![Java](https://img.shields.io/badge/Java-21-red)
