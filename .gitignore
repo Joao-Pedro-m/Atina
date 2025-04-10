@@ -1,17 +1,27 @@
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
-# https://github.com/takari/maven-wrapper#usage-without-binary-jar
-.mvn/wrapper/maven-wrapper.jar
+# Arquivos gerais
+.DS_Store
+Thumbs.db
+*.log
+*.bak
+*.swp
+*.swo
 
-# Eclipse m2e generated files
-# Eclipse Core
-.project
-# JDT-specific (Eclipse Java Development Tools)
-.classpath
+# Ambiente/Docker
+**/mysql-data/  # Volume do MySQL
+.env
+.env.local
+
+# IDEs/Editores
+.idea/
+.vscode/
+*.iml
+*.project
+*.classpath
+.settings/
+
+# Builds/Artefatos
+**/target/
+**/bin/
+**/out/
+**/dist/
+**/build/
