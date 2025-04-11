@@ -6,6 +6,7 @@ WORKDIR /app
 
 # 3 - Copiar arquivos de configuração
 COPY package.json pnpm-lock.yaml* ./
+COPY pnpm-workspace.yaml ./
 COPY tsconfig.json ./
 COPY next.config.ts ./
 COPY postcss.config.mjs ./
