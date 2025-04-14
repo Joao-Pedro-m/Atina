@@ -1,45 +1,26 @@
-# Dockerfile
-# Estágio de construção
-FROM node:20-alpine AS builder
+# 1 - Estágio de construção com Node 18
+FROM node:23-alpine AS development
 
-# Instala o pnpm via corepack
-RUN corepack enable && corepack prepare pnpm@latest --activate
-
+# 2 - Definir diretório de trabalho
 WORKDIR /app
 
-# Copia arquivos de gerenciamento de dependências
-COPY package.json pnpm-lock.yaml* pnpm-workspace.yaml* ./
+# 3 - Copiar arquivos de configuração
+COPY package.json pnpm-lock.yaml* ./
+COPY tsconfig.json ./
+COPY next.config.ts ./
+COPY postcss.config.mjs ./
 
-# Instala dependências
-RUN pnpm install --frozen-lockfile
+# 4 - Instalar pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Copia o restante dos arquivos
+# 5 - Instalar dependências (incluindo devDependencies)
+RUN pnpm install
+
+# 6 - Copiar o restante dos arquivos
 COPY . .
 
-# Constrói a aplicação
-RUN pnpm run build
-
-# Estágio de produção
-FROM node:20-alpine AS runner
-WORKDIR /app
-
-ENV NODE_ENV production
-
-# Instala o pnpm no estágio final
-RUN corepack enable && corepack prepare pnpm@latest --activate
-
-# Copia os arquivos necessários
-COPY --from=builder /app/package.json ./
-COPY --from=builder /app/pnpm-lock.yaml ./
-COPY --from=builder /app/next.config.ts ./
-COPY --from=builder /app/postcss.config.mjs ./
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/src ./src
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-
-# Expõe a porta
+# 7 - Expor a porta 3000
 EXPOSE 3000
 
-# Comando de inicialização
-CMD ["pnpm", "start"]
+# 8 - Iniciar o servidor de desenvolvimento
+CMD ["pnpm", "dev"]
