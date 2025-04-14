@@ -1,5 +1,5 @@
 # 1 - Estágio de construção com Node 18
-FROM node:18-alpine AS development
+FROM node:23-alpine AS development
 
 # 2 - Definir diretório de trabalho
 WORKDIR /app
