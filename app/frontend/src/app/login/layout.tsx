@@ -15,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br">
-      <body className={`${inter.className} antialiased text-xl flex justify-center items-center`}>
+    <html className="flex justify-center"lang="pt-br">
+      <body className={`${inter.className} antialiased h-screen bg-[#A9A9A9] text-xl flex justify-center items-center`}>
         {children}
       </body>
     </html>
