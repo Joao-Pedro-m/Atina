@@ -1,9 +1,6 @@
 @import "tailwindcss";
 
 html, body {
-  background-color: #A9A9A9;
   margin: 0;
   padding: 0;
-  height: 100%;
-  justify-items: center;
 }

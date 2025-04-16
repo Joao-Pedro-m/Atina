@@ -5,8 +5,8 @@ import "@/app/globals.css";
 const inter = Inter({subsets: ["latin"]});
 
 export const metadata: Metadata = {
-  title: "Login Page",
-  description: "Aba de Login do Atina",
+  title: "Stora Page",
+  description: "Aba de Estoque do Atina",
 };
 
 export default function RootLayout({
@@ -15,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className="flex justify-center"lang="pt-br">
-      <body className={`${inter.className} antialiased h-screen bg-[#A9A9A9] text-xl flex justify-center items-center`}>
+    <html lang="pt-br">
+      <body className={`${inter.className} antialiased text-xl flex justify-center items-center`}>
         {children}
       </body>
     </html>
